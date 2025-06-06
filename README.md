@@ -1,12 +1,12 @@
 # HRN_CAG_repeat_counter
-HTT CAG Repeat Counter is a tool developed by Harness Therapeutics Limited for calculating the number of CAG repeats in the human HTT gene using nanopore sequencing data from PCR-amplified DNA. Designed for analyzing repeat expansion disorders, this script detects CAG repeat number from filtered, mapped fastq files.
+HTT CAG Repeat Counter is a tool developed by Harness Therapeutics Limited for calculating the number of CAG repeats in the human HTT gene using nanopore sequencing data from PCR-amplified gDNA. Designed for analyzing repeat expansion disorders, this script detects HTT CAG repeat number from filtered, mapped fastq file.
 
 ## Description
 
 The HRN_CAG_repeat_counter detects CAG repeat number in the human HTT gene, for each read in the input. It takes as input nanopore sequencing data from PCR amplified DNA, where the PCR amplicon spans the HTT exon 1 CAG repeat tract, and the interrupting motif region. The interrupting motif is defined as (CAACAG)<sub>1</sub>(CCGCCA)<sub>1</sub>. We code the interrupting motif as IUPAC `CARCARCCRCCR`.
 
 The sequence of HTT exon 1 in the region of interest can be shown as (CAG)<sub>n</sub>(CAACAG)<sub>1</sub>(CCGCCA)<sub>1</sub>(CCG)<sub>7</sub>(CCT)<sub>2</sub>, where n=19 if it is from the reference allele. 
-HRN_CAG_repeat_counter filters the HTT mapped and unmapped reads for those containing the user provided PCR primer sequences, searches for the presence of the interrupting motif, and calculates the bp distance between the PCR amplicon forward primer and the interrupting motif. The bp value is divided by 3 to determine the number of CAG repeats.
+HRN_CAG_repeat_counter filters the HTT mapped reads for those containing the user provided PCR primer sequences, searches for the presence of the interrupting motif. The position of the forward primer relative to the start of the CAG repeat tract and to define the beginning of the CAG repeat. The script calculates the base pair (bp) distance between this position and the interrupting motif. This distance is then divided by 3 to determine the number of CAG repeats.
 
 ## Requirements
 
